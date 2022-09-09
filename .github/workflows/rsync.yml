@@ -29,7 +29,7 @@ jobs:
                 REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
                 REMOTE_USER: ${{ secrets.REMOTE_USER }}
                 REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-                TARGET: /home/$REMOTE_USER/lapp
+                TARGET: /home/$REMOTE_USER/mejorseguro.sitios.com.uy/lapp
 
             - name: Repository Dispatch
               uses: peter-evans/repository-dispatch@v1
