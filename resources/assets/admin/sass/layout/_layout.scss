@@ -1,0 +1,347 @@
+.pageloader {
+    $logo-size: 6em;
+
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    position: fixed;
+    padding-top: 2em;
+    background: $white;
+    z-index: 8;
+    transition: -webkit-transform .236s ease-out;
+    transition: transform .236s ease-out;
+    transition: transform .236s ease-out,-webkit-transform .236s ease-out;
+    transition-delay: .236s;
+    transform: translateY(100%);
+    will-change: transform;
+
+    .title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: calc(#{$logo-size} + calc(#{$logo-size} / 2)) 0 0 0;
+        font-size: .875em;
+        letter-spacing: .5em;
+        line-height: 1.5em;
+        color: $grey-light;
+        white-space: nowrap;
+    }
+
+    .sitios-logo {
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        display: block;
+        box-sizing: border-box;
+
+        width: $logo-size;
+        height: $logo-size;
+        margin-left: calc(#{$logo-size} / -2);
+        background: none;
+
+
+        figure {
+            position: absolute;
+            display: block;
+            box-sizing: border-box;
+            width: $logo-size;
+            height: $logo-size;
+            background: $primary;
+            z-index: 9998;
+            border-radius: 100%;
+            clip-path: inset(calc(50% - calc(#{$logo-size} / 8)) 0);
+        }
+
+        &::before {
+            content: "";
+            top: 0;
+            left: 0;
+            float: left;
+            position: absolute;
+            display: block;
+            box-sizing: border-box;
+            z-index: 9999;
+
+            width: $logo-size;
+            height: $logo-size;
+            border-radius: 100%;
+            background: transparent;
+            border: calc(#{$logo-size} /4) solid $primary;
+            clip-path: polygon(0% 0%, 80% 0%, 50% 50%, 0% 50%);
+            transform: rotate(0deg);
+
+        }
+
+        &::after {
+            content: "";
+            top: 0;
+            left: 0;
+            float: left;
+            position: absolute;
+            display: block;
+            box-sizing: border-box;
+            z-index: 9999;
+
+            width: $logo-size;
+            height: $logo-size;
+            border-radius: 100%;
+            background: transparent;
+            border: calc(#{$logo-size} /4) solid $primary;
+            clip-path: polygon(0% 0%, 80% 0%, 50% 50%, 0% 50%);
+            transform: rotate(180deg);
+        }
+    }
+
+    &.is-active {
+        transform: translateY(0);
+        .sitios-logo {
+            animation: sitios-logo 2s infinite 0s linear forwards;
+            &::before, &::after {
+                animation: sitios-logo-before 1s infinite 0s linear alternate forwards;
+            }
+        }
+    }
+}
+
+@keyframes sitios-logo {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-180deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes sitios-logo-before {
+    0% {
+        clip-path: polygon(0% 0%, 80% 0%, 50% 50%, 0% 50%);
+        opacity: 1;
+    }
+    25% {
+        clip-path: polygon(0% 0%, 48% 0%, 50% 50%, 0% 50%);
+    }
+    50% {
+        clip-path: polygon(0% 0%, 16% 0%, 50% 50%, 0% 50%);
+    }
+    75% {
+        clip-path: polygon(0% 0%, 0% 16%, 50% 50%, 0% 50%);
+    }
+    100% {
+        clip-path: polygon(0% 0%, 0% 50%, 50% 50%, 0% 50%);
+        opacity: 0;
+    }
+}
+
+
+nav.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+
+    #menu-btn {
+        background: transparent;
+        border: none;
+        border-radius: 50%;
+        padding: 5px;
+        margin: 0;
+        height: 44px;
+        width: 44px;
+        margin-top: 4px;
+        cursor: pointer;
+        outline: none;
+        margin-left: 5px;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        img {
+            max-height: 34px;
+        }
+    }
+
+    #wo2-search {
+        background: $grey-dark;
+        border-radius: 1px;
+        border-color: $grey-dark;
+        color: $white;
+        &:focus {
+            border-color: $primary;
+        }
+    }
+}
+
+.wo2_searchList {
+    position: absolute;
+    width: 50%;
+    max-height: 50vh;
+    background: $sad-background-light;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    overflow-y: auto;
+    z-index: 99;
+    box-shadow: inset 0px 15px 14px -16px rgba(0,0,0,.3);
+
+    transform: translateY(51px);
+    opacity: 1;
+    transition: transform .218s ease-out, opacity .218s ease-out;
+
+    &.is-hidden {
+        display: block !important;
+        transform: translateY(-50vh);
+        opacity: 0;
+    }
+
+    article {
+        .content {
+            background: rgba(0,0,0,.04);
+            padding: 7px;
+            border-radius: 5px;
+
+            a {
+                text-decoration: none !important;
+
+                h1 {
+                    font-size: 1.5em;
+                    border-bottom: 1px solid rgba(0,0,0,.2);
+                }
+                p {
+                    color: $grey-dark;
+                    border-bottom: 1px solid rgba(0,0,0,.05);
+                    padding: 5px;
+                    & small:first-child {
+                        &:before {
+                            content: "#";
+                            color: $grey;
+                        }
+
+                    }
+                }
+                &:last-child p {
+                    border-bottom: none;
+                }
+
+                &:hover {
+                    p, h1 {
+                        background: rgba(0,0,0,.07);
+                    }
+                }
+            }
+        }
+
+    }
+    .media + .media {
+        border-top: none;
+        margin-top: 5px;
+        padding-top: 0;
+    }
+}
+
+aside.menu {
+    width: 320px;
+    background: $sad-background-light;
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 52px);
+    z-index: 9;
+    top: 0;
+    margin-top: 52px;
+    padding: 10px 5px 10px 20px;
+    transform: translateX(-320px);
+    transition: transform .218s ease-out;
+
+    .menu-list{
+        hr{
+            margin: 15px 0;
+        }
+    }
+
+    &.is-active {
+        transform: translateX(0px);
+    }
+}
+
+section#overlay {
+    background: rgba(255,255,255,0.5);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 8;
+    opacity: 0;
+    pointer-events: none;
+
+    &.is-active {
+        pointer-events: all;
+        opacity: 1;
+    }
+}
+
+section.wrapper {
+    margin-top: 52px;
+    margin-bottom: 24px;
+    min-height: calc(100vh - 52px - 24px);
+    max-height: calc(100vh - 52px - 24px);
+    padding-top: 20px;
+    // background-color: red;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+section.wrapper.wo-custom-wrapper{
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    .wo-custom-container{
+        width: 100%;
+    }
+
+    .wo-custom-column{
+        text-align: center;
+
+        .wo-nissan{
+            float: right;
+            padding-right: 35px;
+        }
+
+        .wo-renault{
+            float: left;
+            padding-left: 35px;
+        }
+
+
+        h1{
+            font-weight: bold;
+            font-size: 18px;
+        }
+    }
+}
+
+footer.footer {
+    position: fixed;
+    width: 100%;
+    padding: 12px 0;
+    bottom: 0;
+    background-color: white;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    font-size: 12px;
+
+    .container {
+        margin-top: 2px;
+        .column {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+    }
+
+}

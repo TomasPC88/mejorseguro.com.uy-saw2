@@ -1,0 +1,218 @@
+// EXTEND CLASESS
+/* SLIDE TITLE */
+
+%slide-title {
+  // font-family: $title-font;
+  color: $primary;
+}
+
+/* SLIDE TEXT */
+
+%slide-text {
+  // font-family: $text-font;
+}
+
+/* DOTS */
+
+%line {
+  bottom: 40px;
+  @media screen and(max-width: 992px) {
+    bottom: 35px;
+  }
+  @media screen and(max-width: 992px) {
+    bottom: 30px;
+  }
+  @media screen and(max-width: 767px) {
+    bottom: 25px;
+  }
+  .dot {
+    height: 8px;
+    width: 40px;
+    margin: 0;
+    border-radius: 0;
+    @media screen and(max-width: 992px) {
+      height: 6px;
+      width: 30px;
+    }
+    @media screen and(max-width: 992px) {
+      height: 6px;
+      width: 30px;
+    }
+    @media screen and(max-width: 767px) {
+      height: 5px;
+      width: 25px;
+    }
+  }
+}
+
+%round {
+  .dot {
+    width: 15px;
+    height: 15px;
+    opacity: 1;
+    background: transparent;
+    border: 2px solid white;
+    transition: background ease-in-out 0.236s;
+    &.is-selected {
+      background: white;
+      transition: background ease-in-out 0.236s;
+    }
+    &:hover {
+      background: white;
+      transition: background ease-in-out 0.236s;
+    }
+  }
+}
+
+%hidden {
+  display: none;
+}
+
+/* END DOTS */
+
+/* NEXT-PREV-BUTTONS */
+
+%arrow-next-prev-buttons {
+  background: none;
+  filter: drop-shadow(2px 0px 0px #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    height: auto;
+    path {
+      fill: white;
+    }
+  }
+  &:hover {
+    background: none;
+  }
+}
+
+%hidden-next-prev-buttons {
+  display: none;
+}
+
+/* END NEXT-PREV-BUTTONS */
+
+/* SLIDE-CELL-CONTENT TYPES */
+
+%center {
+  justify-content: center;
+}
+
+%right {
+  justify-content: flex-end;
+}
+
+%right-bottom {
+  @extend %right;
+  align-items: flex-end !important;
+  .slide-text {
+    padding-bottom: 80px !important;
+    @media screen and(max-width: 992px) {
+      padding-bottom: 70px !important;
+    }
+    @media screen and(max-width: 767px) {
+      padding-bottom: 50px !important;
+    }
+    @media screen and(max-width: 576px) {
+      padding-bottom: 40px !important;
+    }
+  }
+}
+
+%left {
+  justify-content: flex-start;
+}
+
+/* FIN SLIDE-CELL-CONTENT */
+
+/* EFFECTS */
+
+%fadeIn {
+  .slide-text {
+    > div {
+      opacity: 0;
+    }
+  }
+  &.is-selected {
+    .slide-text {
+      > div {
+        transform: none;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+%rightToLeft {
+  overflow: hidden;
+  .slide-text {
+    > div {
+      position: relative;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      left: 100%;
+      h2,
+      p {
+        position: relative;
+      }
+    }
+  }
+  &.is-selected {
+    overflow: hidden;
+    .slide-text {
+      > div {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        left: 0%;
+        h2,
+        p {
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+%leftToRight {
+  overflow: hidden;
+  .slide-text {
+    > div {
+      position: relative;
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+      right: 100%;
+      h2,
+      p {
+        position: relative;
+      }
+    }
+  }
+  &.is-selected {
+    overflow: hidden;
+    .slide-text {
+      > div {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        right: 0%;
+        h2,
+        p {
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+/* FIN SLIDE-TEXT EFFECTS */

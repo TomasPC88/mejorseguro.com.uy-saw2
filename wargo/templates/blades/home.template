@@ -1,0 +1,14 @@
+@extends('admin.layout.home')
+@section('thead')
+    <th data-col="id">ID</th>
+   %s
+@endsection
+@section('tbody')
+    @foreach($data as $d)
+        <tr id="{{ $d->id }}" data-pos="{{ $d->pos }}">
+            <td>{{ $d->id }}</td>
+            %s
+            <td><span data-ttip="{{ $d->created_at }}">{{ w2_set_date_format_DMY($d->created_at) }}</span></td>
+        </tr>
+    @endforeach
+@endsection

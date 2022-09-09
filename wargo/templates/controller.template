@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Models\%1$s;
+
+class %1$sController extends BaseSectionController
+{
+
+    //Methods here
+    /**
+     * PortadaController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        $this->name = '%2$s';
+        $this->title = '%1$s';
+        $this->model = %1$s::class;
+
+        view()->share([
+            'name' => $this->name,
+            'title' => $this->title,
+        ]);
+    }
+
+    //Redefine Methods here
+}
+    

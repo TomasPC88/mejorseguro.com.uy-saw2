@@ -1,0 +1,23 @@
+$sad-slide-marginTop: 0px;
+$sad-slide-textTransitionTime: .436s;
+$sad-slide-textTransitionDelay: .218s;
+$border-radius: 0px;
+$sad-slide-max-size: 80vh;
+$primary-color: #99cccc;
+$txt-color: #ffffff;
+$des-bg-color: rgba(0, 0, 0, 0.8);
+$sad-slide-backgroundColor: smc('grey');
+
+
+/////////////NUEVAS MIXING
+
+$effects: 'fadeIn',
+'rightToLeft',
+'leftToRight' !global;
+$slide-types: 'center',
+'right',
+'right-bottom',
+'left' !global;
+$dots-types: 'round',
+'line',
+'hidden' !global;

@@ -1,0 +1,26 @@
+@mixin abstract-text($line-clamp: 3) {
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+
+    @supports(-webkit-line-clamp: $line-clamp) {
+        display: -webkit-box;
+        max-width: 100%;
+        overflow: hidden;
+        /* autoprefixer: off */
+        -webkit-box-orient: vertical;
+        /* autoprefixer: on */
+        white-space: normal;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: $line-clamp;
+    }
+}
+
+@mixin button($bg-color: $primary, $fuente: $text-font, $border: 0px) {
+    @extend .btn; //Extendiendo de la clase de Bootstrap
+    background-color: $bg-color;
+    font-family: $fuente;
+    border-radius: $border;
+    transition: all .236s ease-in-out;
+}

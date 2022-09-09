@@ -1,0 +1,77 @@
+//Import el scss de vue-select
+@import '~vue-select/src/scss/vue-select.scss';
+
+.wo2-form {
+
+    textarea{
+        height: 100px;
+    }
+
+    div.select{
+        width: 100%;
+
+        select{
+            width: 100%;
+        }
+
+        .wo-select-currency{
+            padding: 5px 10px 5px 10px;
+        }
+    }
+
+    .field {
+        p.help:before {
+            content: '\00a0 ';
+        }
+        &.required {
+            label {
+                &:after {
+                    color: $lighter-gray;
+                    content: ' *';
+                }
+            }
+        }
+
+        .wo-add-btn{
+            width: 45px;
+            height: 43px;
+        }
+
+        &.is-quill {
+            height: 260px;
+            padding-bottom: 95px;
+
+            &.is-danger {
+                div.ql-container {
+                    border: 1px solid $danger;
+                }
+            }
+
+            &.is-success {
+                div.ql-container {
+                    border: 1px solid $success;
+                }
+            }
+
+            div.ql-container {
+                border-bottom-left-radius: $radius;
+                border-bottom-right-radius: $radius;
+            }
+
+            div.ql-toolbar {
+                background-color: $white-ter;
+                border-bottom: none;
+                border-top-left-radius: $radius;
+                border-top-right-radius: $radius;
+            }
+        }
+    }
+
+    .tab{
+        display:none;
+        transition: display ease .5s;
+        &.is-active{
+            display:block;
+        }
+    }
+}

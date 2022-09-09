@@ -1,0 +1,423 @@
+@mixin truncate {
+    width: 145px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wo2-table {
+    .tile{
+        cursor:grabbing;
+        background: $sad-green;
+        color:white;
+        position: relative;
+        border-radius: 5px;
+        width: 100%;
+        height:60px;
+        padding: 15px;
+        margin:5px;
+        display: inline-block;
+        span{
+            font-weight: bold;
+            display: block;
+        }
+        img{
+            position: absolute;
+            right:0;
+            top:0;
+            padding:3px;
+            height: inherit;
+        }
+    }
+
+    tr.tile{
+        .drag-handler{
+            display: none;
+        };
+       padding:0 2px;
+    }
+
+    mark {
+        background: rgba($primary, 0.1);
+        border: 1px dotted #39e994;
+    }
+
+    .th-background {
+        position: fixed;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+        height: 58px;
+        /* width: calc(100% - 40px); */
+        /* margin: 0.75em; */
+        left: 20px;
+        right: 20px;
+        z-index: 2;
+    }
+
+    .table-holder {
+        overflow: hidden;
+        position: relative;
+        min-height: calc(100vh - 52px - 24px - 60px - 85px);
+        max-height: calc(100vh - 52px - 24px - 60px - 85px);
+    }
+
+    table {
+        width: 100%;
+        margin-bottom: 100px;
+
+        thead {
+            tr {
+                height: 40px;
+            }
+        }
+
+        .th-inner {
+            &.first {
+                border-left: none;
+                // margin-left: 65px;
+            }
+            position: fixed;
+            z-index: 3;
+            font-weight: bold;
+
+            a {
+                color: inherit;
+                &:hover {
+                    color: $primary;
+                    span {
+                        opacity: 1;
+                    }
+                }
+                span {
+                    opacity: .1;
+                }
+
+                &.current {
+                    color: $primary;
+                    span {
+                        opacity: 1;
+                        color: $primary;
+                    }
+                }
+            }
+        }
+
+        .dropdown-menu {
+            left: 30px;
+            top: 0;
+
+            .dropdown-content {
+                padding-bottom: 0;
+                padding-top: 0;
+                .dropdown-item {
+                    line-height: 0;
+                    padding: 3px;
+                }
+            }
+        }
+
+        tbody {
+
+            tr {
+                cursor:pointer;
+                td:first-child{
+                    span{
+                        padding: 18px;
+                        &:hover{
+                            color:$sad-green;
+                            transition: color ease .25s;
+                        }
+                    }
+                }
+
+                &:focus{
+                    outline: none;
+                }
+
+                &.wo2-table-row_active{
+                    background-color: $sad-green;
+                    outline: none;
+
+                    .drag-handler {
+                        color: white;
+
+                        .icon.is-medium.handle:hover {
+                            color: white;
+                        }
+                    }
+
+                    &:hover {
+                        .drag-handler {
+                            color: white;
+                        }
+                    }
+                }
+                // ############################################################
+
+                &.ignore-drag {
+                    .drag-handler {
+                        display: none;
+                    }
+                    opacity: .3;
+                    pointer-events: none;
+                }
+
+                .drag-handler {
+                    position: absolute;
+                    left: -12px;
+                    margin-top: -5px;
+                    color: transparent;
+                    cursor: grab;
+                }
+
+                &:hover {
+                    .drag-handler {
+                        color: $lighter-gray;
+                    }
+                }
+
+                &.drag-ghost {
+                    background: $primary;
+                }
+
+                // &.can-drag {
+                //     &:focus {
+                //         background: rgba($primary, 0.1);
+                //         border: 1px dotted #39e994;
+                //     }
+                // }
+            }
+        }
+    }
+
+    .drag-container {
+        overflow: hidden;
+        position: relative;
+        margin-top: 90px;
+
+        tr {
+            &.draggable-mirror {
+                width: 100%;
+                background: $sad-green;
+                z-index: 9999;
+
+                &:hover {
+                    cursor: grabbing;
+                    pointer-events: visible;
+                }
+            }
+        }
+
+
+        .field.is-grouped {
+            position: absolute;
+            top: 35px;
+            z-index: 4;
+        }
+
+        // table.drag-can {
+        //   margin-top: 70px;
+        //   border-radius: $radius;
+        //   border: 1px solid $white-ter;
+        //
+        //   tr {
+        //     & + tr.drag-holder {
+        //       td {
+        //         padding-top: calc(100px - 40px); // el alto de las row agregadas
+        //       }
+        //     }
+        //
+        //     &.drag-holder {
+        //       vertical-align: middle;
+        //       td {
+        //         position: absolute;
+        //         padding-top: 100px;
+        //         padding-bottom: 100px;
+        //         text-align: center;
+        //         width: 100%;
+        //         p {
+        //
+        //         }
+        //       }
+        //     }
+        //
+        //     td:nth-child(n+4) {
+        //       display: none;
+        //     }
+        //
+        //     &:not(.drag-holder) {
+        //       td {
+        //         border-width: 0 0 1px;
+        //         padding: 0.5em 0.75em;
+        //       }
+        //     }
+        //
+        //     &.drag-ghost {
+        //       background: $primary;
+        //     }
+        //
+        //   }
+        // }
+    }
+
+}
+
+$default_draggable_area_background:#fafbfb;
+
+.bucket {
+    position: absolute;
+    top: 0;
+    right: -18%;
+    z-index: 1000;
+    //height: $offset;
+    //max-height: 50 + $offset;
+    //min-height: 120px;
+    height: 100vh;
+    width: 18%;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    //transform:translateX(250px);
+    // background: $default_draggable_area_background;
+    background-color: rgba(54, 54, 54, 0.8);
+    //@media screen and (min-width: 767px){
+    //    width: 20%;
+    //    transform:translateX(280px);
+    //}
+    &::after {
+        content: "";
+        width: 100%;
+        height: 40px;
+        background: linear-gradient(0deg, #363636, #4a4a4a, rgba(239, 239, 239, 0));
+        z-index: 999;
+        position: absolute;
+        bottom: 0;
+    }
+
+    tr.tile{
+        min-width: 230px;
+        td{
+            font-weight:bold;
+            &:not([class="name"]){
+                display: none;
+            }
+            text-align: center;
+            width: 100%;
+            @include truncate;
+        }
+    }
+
+    h4 {
+        font-weight: bold;
+        color: #ffffff;
+        width: 100%;
+        height: 54px;
+        padding: 10px 15px;
+        background-color: #363636;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: .85rem;
+
+        i {
+            margin-right: 10px;
+        }
+
+    }
+
+    .bucket-container{
+        position: relative;
+        height: inherit;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .bucket-table-box {
+            height: inherit;
+            overflow-y: auto;
+            margin: 10px;
+
+            &.draggable-container--over{
+                background: rgba(119,115,115,0.8);
+            }
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            tr.draggable-source--is-dragging{
+                display: none;
+            }
+
+            .tile{
+                &:hover{
+                    background: $sad-green;
+                    color:white;
+                    transition: background-color .25s ease;
+                    img{
+                        mix-blend-mode: difference;
+                    }
+                }
+                position: relative;
+                background:white;
+                border-radius: 5px;
+                width: 220px;
+                height:60px;
+                padding: 15px;
+                margin:5px;
+                display: inline-block;
+                span{
+                    font-weight: bold;
+                    display: block;
+                    text-align: center;
+                    @include truncate;
+                }
+                img{
+                    position: absolute;
+                    right:0;
+                    top:0;
+                    padding:3px;
+                    height: inherit;
+                }
+            }
+        }
+
+        span#pull{
+            font-size: 1rem;
+            color: white;
+            padding: 15px;
+            position: absolute;
+            left: -30px;
+            width: 30px;
+            bottom: 45%;
+            height: 60px;
+            background: $sad-green;
+            cursor: pointer;
+            -moz-border-radius: 50px 0 0 50px;
+            -webkit-border-radius: 50px 0 0 50px;
+            border-radius: 50px 0 0 50px;
+            box-shadow: 0px 2px 5px 1px #232222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: box-shadow ease-in-out .236s;
+        }
+    }
+
+
+    //box-shadow: -1em 0 3.4em #363636;
+    transition: right .5s ease;
+
+    &.left{
+        right:0;
+
+        span#pull{
+            box-shadow: 0px 2px 5px 1px rgba(169, 169, 169, 0.61);
+            transition: box-shadow ease-in-out .236s;
+        }
+
+    }
+
+}
+
+.handle{
+    cursor:grab;
+}

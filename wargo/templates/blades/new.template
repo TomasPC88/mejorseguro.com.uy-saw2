@@ -1,0 +1,21 @@
+@extends('admin.layout.new')
+@section('form_content')
+    <input type="hidden" name="id" value="{{ $data->id??'' }}" />
+    <div class="columns">
+
+        <div class="column">
+            %s
+
+            <div class="column">
+                <div class="field" data-validation="['OPT']" data-alias="Activo">
+                    <input type="checkbox" name="active[]" class="switch" {{ isset($data->active) ? ($data->active? 'checked' : '') : '' }} />
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            %s
+        </div>
+
+    </div>
+@endsection

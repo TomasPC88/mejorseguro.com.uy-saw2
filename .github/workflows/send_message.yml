@@ -1,0 +1,23 @@
+name: Notify By Telegram
+
+on:
+    repository_dispatch:
+        types: [send-message]
+
+jobs:
+    sendMessage:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+            - name: send custom message with args
+              uses: appleboy/telegram-action@master
+              with:
+                  to: ${{ secrets.TELEGRAM_TO }}
+                  token: ${{ secrets.TELEGRAM_TOKEN }}
+                  message: |
+                        .:: Github Action ::.
+                        Repository: ${{ github.event.client_payload.repository }}
+                        Workflow: ${{ github.event.client_payload.workflow }}
+                        Branch: ${{ github.event.client_payload.branch }}
+                        Status: ${{ github.event.client_payload.status }}

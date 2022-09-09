@@ -1,0 +1,39 @@
+.sad-slide {
+    
+    .flickity-prev-next-button {
+        border-radius: 0;
+        background: none;
+        filter: drop-shadow(2px 0px 0px #000);
+        width: 70px;
+        height: 70px;
+        svg {
+            path {
+                fill: white;
+            }
+        }
+    } //.flickity-prev-next-button
+
+    .slide-cell {
+
+        .slide-text {
+            &.slide-animate {
+                > div {
+                    opacity: 0;
+                    transform: rotate3d(0.5, .5, 0, 34deg) translateY(-70px);
+                }
+            } //&.slide-animate
+        } //.slide-text
+
+        &.is-selected {
+            .slide-text {
+                &.slide-animate {
+                    > div {
+                        transform: none;
+                        opacity: 1;
+                    }
+                } //&.slide-animate
+            } //.slide-text
+        } //&.is-selected
+
+    } //.slide-cell
+}

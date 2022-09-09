@@ -1,0 +1,113 @@
+//.SLIDE-TEXT EFFECTS
+@mixin slide-cell-effect($transition-type, $transition-time, $transition-delay, $effect:'fadeIn') {
+    @if index($effects, #{$effect}) {
+        @extend %#{$effect};
+        .slide-text {
+            >div {
+                transition: all #{$transition-type} #{$transition-time} !important;
+                @for $i from 1 to 20 {
+                    &:nth-child(#{$i}) {
+                        transition-delay: $i * $transition-delay !important;
+                    }
+                }
+            }
+        }
+    }
+    @else {
+        $effect: 'fadeIn';
+        @extend %#{$effect};
+        .slide-text {
+            >div {
+                transition: all #{$transition-type} #{$transition-time} !important;
+                @for $i from 1 to 20 {
+                    &:nth-child(#{$i}) {
+                        transition-delay: $i * $transition-delay !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//SLIDE-CELL-CONTENT
+@mixin slide-cell-content($text-align, $max-width, $lateral-padding, $type:'center') {
+    //SLIDE-TEXT STYLES VARIABLES
+    /*
+         * $type => Define flex align del .slide-text (content box  del slide)
+         * $text-align => Define text align
+         * $max-width => Define el max-width que va a tener el .slide-text
+         * $lateral-padding => Define padding right & left
+         * $type => $slide-types: 'center', 'right', 'right-bottom', 'left';
+         */
+    @if index($slide-types, #{$type}) {
+        @extend %#{$type};
+    }
+    @else {
+        $type: 'center';
+        $max-width: 70%;
+        $text-align: 'left';
+        $lateral-padding: 10%;
+    }
+    .slide-text {
+        max-width: $max-width;
+        text-align: $text-align;
+        padding: 0 $lateral-padding;
+    }
+}
+
+//FIN SLIDE-CELL-CONTENT
+//PRELOADER
+@mixin preloader($font-size, $height, $width) {
+    // @extend %wo-loading;
+    & {
+        font-size: $font-size;
+        height: $height;
+        width: $width;
+    }
+}
+
+//BUTTONS
+@mixin next-prev-buttons ($status, $box-height, $box-width, $icon-width, $border-radius, $color, $background) {
+    // NEXT-PREV-BUTTONS
+    @extend %arrow-next-prev-buttons;
+    @if $status=='false' {
+        & {
+            display: none;
+        }
+    }
+    @else {
+        & {
+            border-radius: $border-radius;
+            background: $background; // filter: drop-shadow(2px 0px 0px #000);
+            width: $box-width;
+            height: $box-height;
+            svg {
+                width: $icon-width;
+                path {
+                    fill: $color;
+                }
+            }
+            &:hover {
+                @if $background !='none' {
+                    background: darken($background, 10%);
+                }
+                svg {
+                    path {
+                        fill: darken($color, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// END NEXT-PREV-BUTTONS
+@mixin slide-dots($dots-type) {
+    @if index($dots-types, #{$dots-type}) {
+        @extend %#{$dots-type};
+    }
+    @else {
+        $dots-type: 'hidden';
+        @extend %#{$dots-type};
+    }
+}

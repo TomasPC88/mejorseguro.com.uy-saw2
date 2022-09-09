@@ -1,0 +1,58 @@
+@import "node_modules/perfect-scrollbar/src/css/main";
+@import "node_modules/sweetalert2/src/sweetalert2";
+@import "node_modules/quill/dist/quill.core";
+@import "node_modules/quill/dist/quill.snow";
+@import "node_modules/flatpickr/dist/flatpickr";
+
+$fa-font-path: "./webfonts"; // destination folder in dist
+//FontAwesome dependencies
+@import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "node_modules/@fortawesome/fontawesome-free/scss/brands";
+@import "node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "node_modules/@fortawesome/fontawesome-free/scss/v4-shims";
+
+@import "layout/reset";
+@import url(https://fonts.googleapis.com/css?family=PT+Mono|PT+Sans:400,400i,700,700i|Dosis:400,700);
+@import "node_modules/bulma/sass/utilities/initial-variables";
+
+.ps--theme_wo2 {
+    @include ps-container(map-merge($ps-theme-default, (
+        bar-container-hover-bg: $grey-dark,
+        bar-hover-bg: $grey-dark,
+        rail-hover-bg: $grey
+    )));
+}
+
+$sad-green: #39E994;
+$sad-green-shadow: #3fc986;
+$sad-gray: #666666;
+$sad-gray-secondary: #333333;
+
+$lighter-gray: #c7c7c7;
+
+$sad-background-light: #f9f9f9;
+
+$primary: $sad-green;
+$success: $sad-green;
+
+$family-sans-serif: "PT Sans", sans-serif;
+$family-text: $family-sans-serif;
+$family-title: "Dosis", serif;
+$family-mono: "PT Mono", monospace;
+$family-monospace: $family-mono;
+
+$radius: 2px;
+
+
+@import "node_modules/bulma/bulma";
+
+@import "layout/switch";
+
+@import "layout/core";
+@import "layout/layout";
+@import "layout/login";
+@import "wo2-forms";
+@import "wo2-tables";
+@import "wo2-ttip";
+@import "wo2-fileupload";

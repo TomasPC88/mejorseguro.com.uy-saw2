@@ -1,0 +1,213 @@
+//__PRELOADER__//
+// $font-size, => Set preloader icon size es 'px'
+// $height,    => Set preloader box height
+// $width      => Set preloader box width
+%preloader {
+    @include preloader(22px, 80px, 80px);
+    /*Include custom styles behind*/
+}
+
+/* -------------------------------------------------------- */
+
+//__NEXT_PREV_BUTTONS__//
+// $status,         => Admite true or false, set visible/hidden
+// $box-height,     => Set next-prev-buttons height es 'px' or '%'
+// $box-width,      => Set next-prev-buttons width es 'px' or '%'
+// $icon-width,     => Set next-prev-buttons > svg width es 'px' or '%'
+// $border-radius,  => Set next-prev-buttons border-radius es 'px'
+// $color,          => Set next-prev-buttons > svg fill color
+// $background      => Set next-prev-buttons background es 'px'
+%next-prev-buttons {
+    @include next-prev-buttons (true, 70px, 70px, 80px, 0, white, none);
+    /*Include custom styles behind*/
+    @media screen and(max-width: 767px) {
+        width: 40px;
+    }
+}
+
+/*--------------------------------------------------------*/
+
+//__SLIDE DOTS__//
+// $dots-type,         => Admite true or false, set round/line/hidden
+// $box-height,     => Set next-prev-buttons height es 'px' or '%'
+// $box-width,      => Set next-prev-buttons width es 'px' or '%'
+// $icon-width,     => Set next-prev-buttons > svg width es 'px' or '%'
+// $border-radius,  => Set next-prev-buttons border-radius es 'px'
+// $color,          => Set next-prev-buttons > svg fill color
+// $background      => Set next-prev-buttons background es 'px'
+%slide-dots {
+    @include slide-dots ('line');
+    /*Include custom styles behind*/
+}
+
+/*--------------------------------------------------------*/
+
+.sad-slide {
+    //SLIDE-CELL-CONTENT
+    .flickity-viewport {
+        .flickity-slider {
+            .slide-cell {
+                // DEFINE EFFECT
+                /*Options:
+                    * fadeIn
+                    * rightToLeft
+                    * leftToRight
+                   */
+                @include slide-cell-effect('ease-in-out', .740s, .218s, kjasd); //SLIDE-TEXT STYLES VARIABLES
+                .slide-cell-content {
+                    /*
+                         * $type => Define flex align del .slide-text (content box  del slide)
+                         * $text-align => Define text align
+                         * $max-width => Define el max-width que va a tener el .slide-text
+                         *
+                         */
+                    @include slide-cell-content(center, 60%, 0%, 'center');
+                    .slide-text {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        @media screen and(max-width: 992px) {
+                            max-width: 90%;
+                        }
+                        div {
+                            max-width: 100%;
+                            h1 {
+                                $num_lines: 2;
+                                @extend %slide-title;
+                                text-align: -webkit-center;
+                                font-weight: bold;
+                                position: relative;
+                                color: #ffffff; // font-family: $title-font;
+                                font-size: 45px;
+                                line-height: (45 + $num_lines)#{px};
+                                background: none;
+                                margin: 5px 0px;
+                                padding: 0px;
+                                max-width: 100%;
+                                height: auto;
+                                max-height: (45 + $num_lines)#{px};
+                                white-space: nowrap;
+                                overflow: hidden;
+                                display: block;
+                                text-overflow: ellipsis;
+                                @media screen and(max-width: 992px) {
+                                    font-size: 40px;
+                                    line-height: (40 + $num_lines)#{px};
+                                    max-height: (40 + $num_lines)#{px};
+                                }
+                                @media screen and(max-width: 767px) {
+                                    font-size: 28px;
+                                    line-height: (28 + $num_lines)#{px};
+                                    max-height: (28 + $num_lines)#{px};
+                                }
+                                @media screen and(max-width: 576px) {
+                                    font-size: 20px;
+                                    line-height: (20 + $num_lines)#{px};
+                                    max-height: (20 + $num_lines)#{px};
+                                }
+                                @supports (-webkit-line-clamp: $num_lines) {
+                                    & {
+                                        display: -webkit-box;
+                                        width: 100%;
+                                        max-width: 100%;
+                                        overflow: hidden;
+                                        /* autoprefixer: off */
+                                        -webkit-box-orient: vertical;
+                                        /* autoprefixer: on */
+                                        white-space: normal;
+                                        text-overflow: ellipsis;
+                                        -webkit-line-clamp: $num_lines;
+                                        max-height: ((45 + $num_lines) * $num_lines)#{px};
+                                        @media screen and(max-width: 992px) {
+                                            font-size: 40px;
+                                            line-height: (40 + $num_lines)#{px};
+                                            max-height: ((40 + $num_lines) * $num_lines)#{px};
+                                        }
+                                        @media screen and(max-width: 767px) {
+                                            font-size: 28px;
+                                            line-height: (28 + $num_lines)#{px};
+                                            max-height: ((28 + $num_lines) * $num_lines)#{px};
+                                        }
+                                        @media screen and(max-width: 576px) {
+                                            font-size: 20px;
+                                            line-height: (20 + $num_lines)#{px};
+                                            max-height: ((20 + $num_lines) * $num_lines)#{px};
+                                        }
+                                    }
+                                }
+                            }
+                            p {
+                                $num_lines: 2; // @extend %slide-text;
+                                text-align: -webkit-center;
+                                position: relative;
+                                color: darken(#ffffff, 20%); // font-family: $title-font;
+                                font-size: 35px;
+                                line-height: (35 + $num_lines)#{px};
+                                background: none;
+                                margin: 5px 0px;
+                                padding: 0px;
+                                max-width: 100%;
+                                height: auto;
+                                max-height: (35 + $num_lines)#{px};
+                                white-space: nowrap;
+                                overflow: hidden;
+                                display: block;
+                                text-overflow: ellipsis;
+                                @media screen and(max-width: 992px) {
+                                    font-size: 30px;
+                                    line-height: (30 + $num_lines)#{px};
+                                    max-height: (30 + $num_lines)#{px};
+                                }
+                                @media screen and(max-width: 767px) {
+                                    font-size: 25px;
+                                    line-height: (25 + $num_lines)#{px};
+                                    max-height: (25 + $num_lines)#{px};
+                                }
+                                @media screen and(max-width: 576px) {
+                                    font-size: 16px;
+                                    line-height: (16 + $num_lines)#{px};
+                                    max-height: (16 + $num_lines)#{px};
+                                }
+                                @supports (-webkit-line-clamp: $num_lines) {
+                                    & {
+                                        display: -webkit-box;
+                                        width: 100%;
+                                        max-width: 100%;
+                                        overflow: hidden;
+                                        /* autoprefixer: off */
+                                        -webkit-box-orient: vertical;
+                                        /* autoprefixer: on */
+                                        white-space: normal;
+                                        text-overflow: ellipsis;
+                                        -webkit-line-clamp: $num_lines;
+                                        max-height: ((45 + $num_lines) * $num_lines)#{px};
+                                        @media screen and(max-width: 992px) {
+                                            font-size: 30px;
+                                            line-height: (30 + $num_lines)#{px};
+                                            max-height: ((30 + $num_lines) * $num_lines)#{px};
+                                        }
+                                        @media screen and(max-width: 767px) {
+                                            font-size: 25px;
+                                            line-height: (25 + $num_lines)#{px};
+                                            max-height: ((25 + $num_lines) * $num_lines)#{px};
+                                        }
+                                        @media screen and(max-width: 576px) {
+                                            font-size: 16px;
+                                            line-height: (16 + $num_lines)#{px};
+                                            max-height: ((16 + $num_lines) * $num_lines)#{px};
+                                        }
+                                    }
+                                }
+                            }
+                            /*--------------------------------------------------------*/
+                            @media screen and(max-width: 767px) {
+                                max-width: 90%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } // FIN SLIDE-CELL-CONTENT
+}

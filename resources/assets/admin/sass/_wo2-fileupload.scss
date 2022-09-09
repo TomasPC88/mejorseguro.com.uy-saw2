@@ -1,0 +1,20 @@
+.wo2-fileupload {
+
+    .notification {
+        padding: 1.0rem 2.5rem 1.0rem 1.0rem;
+    }
+
+    custom-metas, custom-buttons {
+        display: none;
+    }
+
+    article {
+        &.is-loading {
+            opacity: .5;
+        }
+    }
+}
+
+.wo2-swal-fu__metas {
+    text-align: left;
+}

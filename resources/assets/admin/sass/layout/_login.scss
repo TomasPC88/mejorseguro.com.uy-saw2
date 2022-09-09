@@ -1,0 +1,80 @@
+.sad-login {
+
+    &--panel {
+        background: $sad-background-light;
+        max-width: 500px;
+        height: 180px;
+        padding: 20px;
+        position: relative;
+        margin: 0 auto;
+        transition: height .436s ease-out;
+
+        $panel-name: &;
+
+        @at-root #{$panel-name}.step-2 {
+            height: 240px;
+        }
+
+        &_form {
+
+            &-header {
+                figure {
+                    display: block;
+                    position: absolute;
+                }
+                h1 {
+                    display: block;
+                    position: absolute;
+                    font-size: 40px;
+                    margin-left: 120px;
+                    margin-top: -5px;
+                    span {
+                        font-size: 19px;
+                        color: gray;
+                    }
+                }
+            }
+
+            &-email {
+                position: absolute;
+                margin-left: 120px;
+                top: 60px;
+                width: calc(100% - 160px);
+                transition: all .218s ease-out;
+
+                @at-root #{$panel-name}.step-3 & input {
+                    border: none;
+                    box-shadow: none;
+                }
+            }
+            &-password {
+                position: absolute;
+                margin-left: 120px;
+                top: 110px;
+                opacity: 0;
+                width: calc(100% - 160px);
+                transition: opacity .436s ease-out .218s;
+
+                @at-root #{$panel-name}.step-2 & {
+                    opacity: 1;
+                }
+            }
+            &-submit {
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+
+                span {
+                    font-size: 11px;
+                    display: inline-block;
+                    text-align: right;
+                }
+            }
+            &-forgot {
+                position: absolute;
+                bottom: -25px;
+                right: 20px;
+            }
+        }
+    }
+}

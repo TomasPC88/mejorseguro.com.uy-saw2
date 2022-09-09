@@ -1,0 +1,327 @@
+body {
+    background-color: $bg-body;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: $title-font;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 35px;
+    color: $title-color;
+}
+
+h2,
+h3 {
+    font-size: 25px;
+    color: $gray-medium;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h5 {
+    font-size: 18px;
+}
+
+p {
+    font-family: $text-font;
+    font-size: 15px;
+    color: #5d5d5d;
+}
+
+small {
+    font-family: $text-font;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    padding: 0px;
+
+    li {
+        list-style: none;
+    }
+}
+
+#scrollUp {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 70px;
+    right: 10px;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 0 1rem rgba($color: #000000, $alpha: .2);
+    transition: ease all .236s;
+
+    @media screen and(max-width: 767px) {
+        width: 30px;
+        height: 30px;
+        right: 16px;
+    }
+
+    &:hover {
+        background: darken($primary, 10%);
+        transition: ease all .236s;
+    }
+
+
+
+    i {
+        font-size: 35px;
+        color: #ffff;
+
+        @media screen and(max-width: 767px) {
+            font-size: 15px;
+        }
+    }
+
+}
+
+/*==============================================================COLORS=========================================================================*/
+.bg-secondary {
+
+    background-color: $secondary;
+
+    &#{--dark} {
+        background-color: #3a3a3a !important;
+    }
+
+    &#{--darker} {
+        background-color: #363636 !important;
+    }
+}
+
+input,
+select {
+    // border-color: #d4d4d4;
+    width: 100%;
+    height: 45px;
+    padding: 10px 16px;
+    min-width: 220px;
+    cursor: pointer;
+    background-color: white;
+    margin-left: 6px;
+    margin-right: 6px;
+    font-family: $text-font;
+
+    &:first-of-type {
+        margin-left: 0;
+    }
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+}
+
+select {
+    color: #696969;
+}
+
+.message {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+
+    h3 {
+        // width: 75% !important;
+        font-weight: 300 !important;
+
+        // @media screen and (max-width: 576px) {
+        //     width: 100% !important;
+        // }
+    }
+}
+
+/*==============================================================HEADER=========================================================================*/
+.grecaptcha {
+    display: none;
+}
+
+
+
+/*==============================================================SLIDER=========================================================================*/
+.slide {
+    width: 100%;
+    height: calc(100vh - 60px);
+    position: relative;
+    margin-top: 51px;
+    margin-bottom: 60px;
+
+}
+
+.slide-texts {
+    width: calc(100% - 420px);
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+
+        h1 {
+            font-size: 30pt !important;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        h1 {
+            font-size: 27pt !important;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        h1 {
+            width: 100%;
+            text-align: center !important;
+            font-size: 22pt !important;
+        }
+
+        p {
+            width: 100%;
+            text-align: center;
+        }
+
+        .col-12 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.btn-floating {
+    display: none;
+    position: fixed;
+    right: 7px;
+    bottom: 10px;
+    z-index: 999;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+    border-color: white;
+    background-color: $primary;
+    box-shadow: 0 0 1rem rgba($color: #000000, $alpha: .25);
+
+    @media screen and (max-width: 992px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    i {
+        font-size: 20px;
+        color: white;
+    }
+}
+
+
+/*==============================================================BANNER=========================================================================*/
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgba($color: #000000, $alpha: .4);
+
+    h1 {
+        font-size: 35pt;
+        font-weight: bold;
+        // margin-left: 30px;
+    }
+
+    p {
+        font-size: 10pt;
+        // margin-left: 30px;
+    }
+
+    .btn {
+        color: white;
+        border-color: white;
+        // margin-left: 30px;
+
+        &:hover {
+            border-color: #dd489a;
+            background-color: #dd489a;
+        }
+    }
+}
+
+.banner {
+    position: relative;
+    min-height: 340px;
+    background-size: cover;
+    background-position: center center;
+
+    &__container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: rgba($color: #000000, $alpha: .4);
+
+        h1 {
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 0;
+
+    .breadcrumb-item {
+        a {
+            color: white;
+            font-weight: 500;
+        }
+
+        &.active {
+            color: $primary;
+            font-weight: 500;
+
+            &:before {
+                color: $primary;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.paginador-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*==============================================================FOOTER=========================================================================*/

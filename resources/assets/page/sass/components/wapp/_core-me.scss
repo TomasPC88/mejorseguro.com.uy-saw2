@@ -1,0 +1,47 @@
+@import "variables";
+
+#call2ation {
+    // display: flex;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1);
+    transition: transform ease-in-out .236s;
+    cursor: pointer;
+    display: none;
+
+    @media screen and(max-width: 992px) {
+        width: 47px;
+        height: 47px;
+        left: 15px;
+        bottom: 10px;
+        top: auto;
+        position: fixed;
+        background: $button-bg;
+        // border: 2px solid $button-border-color;
+        border-radius: 50%;
+        box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.60);
+        // top: 150px;
+        display: flex;
+
+        .icon-box {
+            margin: 0;
+            border: none;
+        }
+
+        p {
+            display: none;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+            transition: transform ease-in-out .236s;
+        }
+
+        i,
+        svg {
+            color: white;
+            font-size: 30px;
+        }
+    }
+}

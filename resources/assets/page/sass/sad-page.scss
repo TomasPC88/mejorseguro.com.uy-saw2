@@ -1,0 +1,59 @@
+@import "sad-material-colors";
+@import "layout/variables";
+
+// Variables de bootstrap a modificar
+$font-family-sans-serif: -apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol" !default;
+$font-family-monospace: "SFMono-Regular",
+Menlo,
+Monaco,
+Consolas,
+"Liberation Mono",
+"Courier New",
+monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+
+
+
+@import "node_modules/bootstrap-scss/bootstrap";
+// End of bootstrap
+
+
+$fa-font-path: "./webfonts"; // destination folder in dist
+//FontAwesome dependencies
+@import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "node_modules/@fortawesome/fontawesome-free/scss/brands";
+@import "node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "node_modules/@fortawesome/fontawesome-free/scss/v4-shims";
+
+//Custom modules
+@import "layout/mixins";
+@import "components/lang/lang";
+@import "components/wapp/core-me";
+
+//Header
+@import 'layout/includes/header/header';
+
+@import "components/error-pages/core";
+@import "layout/core";
+@import "layout/pagination";
+@import 'layout/preloader/preloader.scss';
+@import "sad-gallery/sad-gallery";
+@import "sad-slide/sad-slide";
+
+//Home
+@import 'page/home';
+@import 'page/empresa';
+@import 'page/contacto';
+
+//footer
+@import 'layout/includes/footer/footer';

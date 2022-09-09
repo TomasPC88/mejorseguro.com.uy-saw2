@@ -1,0 +1,165 @@
+.pdf {
+    width: 100%;
+    padding: 30px;
+    color: lighten($secondary, 5%);
+
+    .mt-35 {
+        margin-top: 35px;
+    }
+
+    .mb-35 {
+        margin-bottom: 35px;
+    }
+
+    .bg-gray {
+        background: lighten($secondary, 60%);
+    }
+
+    .align-center{
+        text-align: center;
+    }
+
+    .img {
+        &__container{
+            width: 250px;
+            height: 250px;
+            display: inline;
+            text-align: center;
+            img{
+                max-width: 100%;
+                height: inherit;
+                object-fit: scale-down;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .page-break {
+        page-break-after: always;
+    }
+
+    .table {
+        th, td {
+            border: 1px solid lighten($secondary, 50%)!important;
+
+            &.txt {
+                &--bold {
+                    font-weight: bold;
+                }
+
+            }
+        }
+
+        tr {
+            &.observations {
+                td {
+                    padding: 15px 10px;
+                    background-color: #ffffff;
+                }
+            }
+        }
+
+        tr,th,td {
+            height: 35px;
+            vertical-align: middle;
+            padding: 0px 10px;
+            font-weight: normal;
+        }
+
+        tbody {
+        }
+
+        thead {
+            tr {
+                th {
+                    border: 0px solid #ffffff!important;
+
+                    &.label {
+                        padding: 0px;
+
+                        span {
+                            line-height: 35px;
+                            font-size: 1.2rem;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                            border-bottom: 0px solid;
+                            border-top-right-radius: 5px;
+                            border-top-left-radius: 5px;
+                            background: lighten($primary, 10%);
+                            padding: 0px 10px;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+
+        &--striped {
+            tbody {
+                tr {
+                    background-color: lighten($secondary, 60%);
+
+                    &:nth-child(odd) {
+                        background-color: lighten($secondary, 100%);
+                    }
+                }
+            }
+        }
+    }
+
+    .header {
+        height: 100px;
+        vertical-align: middle;
+        text-align: center;
+
+        &__brand {
+            height: 100px;
+            text-align: left;
+
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+
+        &__info {
+            height: 100px;
+            width: 100%;
+            max-width: 300px;
+            float: right;
+            display: table;
+        }
+    }
+
+    footer {
+        &.footer {
+            padding: 30px 0px;
+
+            ul {
+                width: 100%;
+                text-align: center;
+                list-style: none;
+
+                li {
+                    display: inline;
+                    border-right: 1px solid lighten($secondary, 30%);
+                    padding: 0px 10px;
+                    line-height: 1.2rem;
+
+                    &:last-of-type {
+                        border-right: 0px;
+                    }
+                }
+            }
+
+            .footer {
+                &__credits {
+                    border-top: 2px solid lighten($secondary, 55%);
+                    text-align: center;
+                    margin: 15px 0px;
+                    padding: 15px 0px;
+                }
+            }
+        }
+    }
+}
